@@ -1,0 +1,39 @@
+kind: Pod
+apiVersion: v1
+metadata:
+  name: webserver
+  labels:
+    app: webserver
+spec:
+  containers:
+  - name: webserver
+    image: example.com/webserver:latest
+    imagePullPolicy: Never 
+---
+kind: Service
+apiVersion: v1
+metadata:
+  name: webserver-service
+spec:
+  selector:
+    app: webserver
+  ports:
+  # Default port used by the image
+  - port: 1323
+---
+apiVersion: networking.k8s.io/v1
+kind: Ingress
+metadata:
+  name: webserver-ingress
+spec:
+  rules:
+  - http:
+      paths:
+      - pathType: Prefix
+        path: "/"
+        backend:
+          service:
+            name: webserver-service
+            port:
+              number: 1323
+---

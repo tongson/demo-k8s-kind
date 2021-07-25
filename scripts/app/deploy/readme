@@ -1,0 +1,5 @@
+1. Run unit test
+2. Compile application
+3. Create container image
+4. Upload image to cluster
+5. Apply manifest

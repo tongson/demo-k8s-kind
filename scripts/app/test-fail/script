@@ -1,0 +1,14 @@
+code=$(curl -X GET \
+     -H 'Accept: application/json' \
+     -H 'Pragma: no-cache' \
+     -H 'Cache-Control: no-cache' \
+     -H 'Host: x.example.com' \
+     -o /dev/null \
+     --write-out "%{http_code}" \
+     -s http://127.0.0.1/endpoint)
+if [ $code != "404" ]
+then
+  __error 'Expected a HTTP 404.'
+else
+  __print 'Endpoint correctly returned a HTTP 404.'
+fi

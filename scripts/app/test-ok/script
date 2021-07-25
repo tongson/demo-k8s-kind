@@ -1,0 +1,6 @@
+curl -X GET \
+     -H 'Accept: application/json' \
+     -H 'Pragma: no-cache' \
+     -H 'Cache-Control: no-cache' \
+     -H 'Host: local.example.com' \
+     -v --fail --silent --show-error -L http://127.0.0.1/endpoint

@@ -1,0 +1,4 @@
+__mark "Starting up Kind cluster"
+__cluster_create
+__mark "Adding nginx ingress"
+__cluster_add_ingress
